@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="WiredBrainCoffee.CustomersApp.View.CustomersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WiredBrainCoffee.CustomersApp.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <!--Grid with two rows 1.Stackpanel holding button 2.Listview of customers-->
+    <!--Name your elements when you want to access them in the code behind-->
+    <!--Moved Column definitions to make it into a user control as there the move button is dependent on column value-->
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Name="customerListGrid" Background="Gray" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--Stack holding three buttons-->
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="10" Width="75">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/add.png" Height="18" Margin="0 0 5 0"></Image>
+                        <TextBlock Text="Add"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Content="Delete" Margin="10" Width="75"></Button>
+                <!--Define a click event for the move button-->
+                <Button Margin="10" Width="75" Click="BtnMoveNavigation_Click">
+                    <Image Source="/Images/move.png" Height="18"></Image>
+                </Button>
+            </StackPanel>
+            <!--List of customers-->
+            <ListView Grid.Row="1" Margin="0 10 0 0">
+                <ListViewItem>Ryan</ListViewItem>
+                <ListViewItem>Luna</ListViewItem>
+                <ListViewItem>Kaos</ListViewItem>
+            </ListView>
+        </Grid>
+
+        <!--Customer details-->
+        <StackPanel Margin="10"  Grid.Column="1">
+            <Label>First Name:</Label>
+            <TextBox></TextBox>
+            <Label>Last Name:</Label>
+            <TextBox></TextBox>
+            <CheckBox Margin="0 10 0 0">
+                Is Developer
+            </CheckBox>
+        </StackPanel>
+    </Grid>
+</UserControl>
