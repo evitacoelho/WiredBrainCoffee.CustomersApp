@@ -5,8 +5,95 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WiredBrainCoffee.CustomersApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Customers App"  FontSize="20"
+        Width="600" Height="700"
+        d:DesignHeight ="700" d:DesignWidth="600">
+    
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
 
+        <!--Main menu-->
+        <!--Headers contain _ for keyboard navigation with Alt Key-->
+        <Menu FontSize="20" Grid.ColumnSpan="3">
+            <MenuItem Header ="_View">
+                <MenuItem Header="_Customers"></MenuItem>
+                <MenuItem Header="_Products"></MenuItem>
+            </MenuItem>
+        </Menu>
+        
+        <!--Header-->
+        <!--Add a grid as a parent element to set properties to the header-->
+        <Grid Background="Orange"
+                    Grid.Row="1" Grid.ColumnSpan="3">
+            <StackPanel   Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+                <!--change build action (resource or content) on properties for runtime visibility of images-->
+                <Image Source="/Images/logo.png" Width="100" 
+                   Margin="5" VerticalAlignment="Center"></Image>
+                <TextBlock Text="Customers App" FontSize="30" 
+                       Foreground="White" Margin="5"
+                       VerticalAlignment="Center"></TextBlock>
+                <TextBlock Text="Version 1.0" FontSize="16" 
+                       Foreground="#333333"
+                       Margin="5 0 0 25" VerticalAlignment="Bottom"></TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <!--Customer List-->
+        <!--Grid with two rows 1.Stackpanel holding button 2.Listview of customers-->
+        <!--Name your elements when you want to access them in the code behind-->
+        <Grid Name="customerListGrid" Background="Gray"  Grid.Row="2" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--Stack holding three buttons-->
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="10" Width="75">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/add.png" Height="18" Margin="0 0 5 0"></Image>
+                    <TextBlock Text="Add"></TextBlock>
+                </StackPanel>
+                </Button>
+                <Button Content="Delete" Margin="10" Width="75"></Button>
+                <!--Define a click event for the move button-->
+                <Button Margin="10" Width="75" Click="BtnMoveNavigation_Click">
+                    <Image Source="/Images/move.png" Height="18"></Image>
+                </Button>
+            </StackPanel>
+             <!--List of customers-->
+            <ListView Grid.Row="1" Margin="0 10 0 0">
+                <ListViewItem>Ryan</ListViewItem>
+                <ListViewItem>Luna</ListViewItem>
+                <ListViewItem>Kaos</ListViewItem>
+            </ListView>
+        </Grid>
+
+        <!--Customer details-->
+        <StackPanel Margin="10" Grid.Row="2" Grid.Column="1">
+            <Label>First Name:</Label>
+            <TextBox></TextBox>
+            <Label>Last Name:</Label>
+            <TextBox></TextBox>
+            <CheckBox Margin="0 10 0 0 ">
+                Is Developer
+            </CheckBox>
+        </StackPanel>
+
+        <!--Status bar-->
+        <StatusBar Grid.Row="3" Grid.ColumnSpan="3">
+            <StatusBarItem FontSize="20" Content="(c) Wired Brain Coffee">
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
