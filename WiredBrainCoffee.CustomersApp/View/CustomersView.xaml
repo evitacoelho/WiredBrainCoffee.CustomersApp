@@ -2,11 +2,16 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WiredBrainCoffee.CustomersApp.View"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:converter="clr-namespace:WiredBrainCoffee.CustomersApp.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <!--Grid with two rows 1.Stackpanel holding button 2.Listview of customers-->
+    <!--Define a converter in resources-->
+    <UserControl.Resources>
+        <converter:NavigationSideToGridColumnConverter
+            x:Key="NavigationSideToGridColumnConv"/>
+    </UserControl.Resources>
+
+        <!--Grid with two rows 1.Stackpanel holding button 2.Listview of customers-->
     <!--Name your elements when you want to access them in the code behind-->
     <!--Moved Column definitions to make it into a user control as there the move button is dependent on column value-->
     <Grid >
@@ -15,15 +20,19 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
-        <Grid Name="customerListGrid" Background="Gray" >
+        <!--Bind the grid column value to the NavigationColumn property-->
+        <!--use the converter key--> 
+        <Grid Grid.Column="{Binding Path=NavigationSide, 
+            Converter={StaticResource NavigationSideToGridColumnConv}}"  
+              Background="Gray" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
+            
             <!--Stack holding three buttons-->
             <StackPanel Orientation="Horizontal">
-                <Button Margin="10" Width="75">
+                <Button Margin="10" Width="75" Click="BtnAdd_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Images/add.png" Height="18" Margin="0 0 5 0"></Image>
                         <TextBlock Text="Add"></TextBlock>
@@ -35,21 +44,36 @@
                     <Image Source="/Images/move.png" Height="18"></Image>
                 </Button>
             </StackPanel>
+           
             <!--List of customers-->
-            <ListView Grid.Row="1" Margin="0 10 0 0">
-                <ListViewItem>Ryan</ListViewItem>
-                <ListViewItem>Luna</ListViewItem>
-                <ListViewItem>Kaos</ListViewItem>
+            <!--Bind it to the observable collection of customers in the VM-->
+            <!--SelectedItem holds the selected object in the list view-->
+            <!--To display a property of the object use display memeber path-->
+            <ListView x:Name="customerListView" Grid.Row="1" Margin="0 10 0 0"
+                      ItemsSource="{Binding Path=Customers}"
+                      SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
+                      DisplayMemberPath="FirstName">
+                
             </ListView>
         </Grid>
 
         <!--Customer details-->
         <StackPanel Margin="10"  Grid.Column="1">
+            <!--Bind the text of this textbox to an element defined by its name : this is the data source-->
+            <!--Path defines the content that is displayed
+            Mode controls the direction of update
+            Update source controls when the update will be triggered-->
             <Label>First Name:</Label>
-            <TextBox></TextBox>
+            <TextBox Text="{Binding Path=SelectedCustomer.FirstName,
+                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            
             <Label>Last Name:</Label>
-            <TextBox></TextBox>
-            <CheckBox Margin="0 10 0 0">
+            <TextBox Text="{Binding Path=SelectedCustomer.LastName,
+                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            
+            <!--Replace text with ischecked for a checkbox-->
+            <CheckBox  IsChecked ="{Binding Path=SelectedCustomer.IsDeveloper,
+                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0 10 0 0">
                 Is Developer
             </CheckBox>
         </StackPanel>
