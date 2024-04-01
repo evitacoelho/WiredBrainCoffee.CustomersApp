@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using WiredBrainCoffee.CustomersApp.Command;
 using WiredBrainCoffee.CustomersApp.Data;
 using WiredBrainCoffee.CustomersApp.Model;
 
@@ -14,6 +15,11 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
         public CustomersViewModel(ICustomerDataProvider customerDataProvider)
         {
             _customerDataProvider = customerDataProvider;
+            //pass the Add() to delegateCommand 
+            // generate a prop to be used in the view
+            AddCommand = new DelegateCommand(Add);
+            MoveNavigationCommand = new DelegateCommand(MoveNavigation);
+            DeleteCommand = new DelegateCommand(Delete, CanDelete);
         }
 
         //create an observable collection of customers for the Customers View
@@ -30,9 +36,14 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
             {  
                 _selectedCustomer = value; 
                 RaisePropertyChanged();
+                //raise event when if customer is selected or not
+                RaisePropertyChanged(nameof(IsCustomerSelected)); 
+                //to raise event change on the delegate command class
+                DeleteCommand.RaiseCanExecuteChanged();
             }
         }
 
+        public bool IsCustomerSelected => SelectedCustomer is not null;
         public NavigationSide NavigationSide
         {
             get => _navigationSide;
@@ -42,8 +53,9 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
                 RaisePropertyChanged();
             }
         }
-
-
+        public DelegateCommand AddCommand { get; }
+        public DelegateCommand MoveNavigationCommand { get; }
+        public DelegateCommand DeleteCommand { get; }
 
         //Call the Async method from the Data provider interface to load data for Customers prop for the view
         public async Task LoadAsync()
@@ -66,7 +78,8 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
 
         //Add method to implement the add button click
         //Adds a new customer to the observable collection of customers
-        internal void Add()
+        //match the signature of the delegate command by adding an object parameter
+        private void Add(object? parameter)
         {
             //create a customer on button click add with some defined values
             var customer = new Customer { FirstName = "New" };
@@ -76,12 +89,28 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
             SelectedCustomer = viewModel;
         }
 
-        internal void MoveNavigation()
+        //match the signature of the delegate command by adding an object parameter
+        private void MoveNavigation(object? parameter)
         {
             NavigationSide = NavigationSide == NavigationSide.Left
               ? NavigationSide.Right
               : NavigationSide.Left;
           
+        }
+        private void Delete(object obj)
+        {
+            //remove an existing selected customer from the observable collection
+            if(SelectedCustomer is not null)
+            {
+                Customers.Remove(SelectedCustomer);
+                SelectedCustomer = null;
+            }
+        }
+
+        //check if the customer exists to enable delete
+        private bool CanDelete(object arg)
+        {
+            return SelectedCustomer is not null;
         }
 
     }

@@ -6,17 +6,23 @@
              xmlns:local="clr-namespace:WiredBrainCoffee.CustomersApp.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+    <!--Define resources that can be used in xaml with a key-->
+    <!--Defining toe resource in app.xaml will give them global access-->
+    <!--<UserControl.Resources>
+        <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="Orange"/>
+        <SolidColorBrush x:Key="HeaderForegroundBrush" Color="White"/>
+    </UserControl.Resources>-->
     <!--User control for the header-->
     <!--Add a grid as a parent element to set properties to the header-->
-    <Grid Background="Orange">
+    <!--Bind resources defined using keys and static resource-->
+    <Grid Background="{StaticResource HeaderBackgroundBrush}">
         <StackPanel   Orientation="Horizontal"
             HorizontalAlignment="Center">
             <!--change build action (resource or content) on properties for runtime visibility of images-->
             <Image Source="/Images/logo.png" Width="100" 
            Margin="5" VerticalAlignment="Center"></Image>
             <TextBlock Text="Customers App" FontSize="30" 
-               Foreground="White" Margin="5"
+               Foreground="{StaticResource HeaderForegroundBrush}" Margin="5"
                VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="Version 1.0" FontSize="16" 
                Foreground="#333333"

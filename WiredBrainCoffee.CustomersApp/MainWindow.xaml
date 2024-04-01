@@ -38,7 +38,7 @@
         
         <!--Status bar-->
         <StatusBar Grid.Row="3">
-            <StatusBarItem FontSize="20" Content="(c) Wired Brain Coffee">
+            <StatusBarItem FontSize="20" Content="(c) Wired Brain Coffee" Background="{StaticResource HeaderBackgroundBrush}">
             </StatusBarItem>
         </StatusBar>
     </Grid>
