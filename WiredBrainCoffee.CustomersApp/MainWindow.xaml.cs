@@ -10,11 +10,11 @@ namespace WiredBrainCoffee.CustomersApp
     {
         private MainViewModel _viewModel;
 
-        public MainWindow()
+        public MainWindow(MainViewModel viewModel)
         {
             InitializeComponent();
             //set the data context for this view --> bind it the view model
-            _viewModel = new MainViewModel(new CustomersViewModel(new CustomerDataProvider()), new ProductsViewModel());
+            _viewModel = viewModel;
             DataContext = _viewModel;
 
             //event handler for loaded event when the view is ready 
