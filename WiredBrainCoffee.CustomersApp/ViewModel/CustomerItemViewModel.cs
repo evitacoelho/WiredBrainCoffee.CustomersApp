@@ -32,10 +32,10 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
         }
         public string? LastName
         {
-            get => _model.FirstName;
+            get => _model.LastName;
             set
             {
-                _model.FirstName = value;
+                _model.LastName = value;
                 RaisePropertyChanged();
             }
         }

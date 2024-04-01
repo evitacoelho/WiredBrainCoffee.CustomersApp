@@ -9,9 +9,15 @@
     <UserControl.Resources>
         <converter:NavigationSideToGridColumnConverter
             x:Key="NavigationSideToGridColumnConv"/>
+        <DataTemplate x:Key="CustomerListView">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding FirstName}" FontWeight="Bold"/>
+                <TextBlock Text="{Binding LastName}" Margin="5 0 0 0"/>
+            </StackPanel>
+        </DataTemplate>
     </UserControl.Resources>
 
-        <!--Grid with two rows 1.Stackpanel holding button 2.Listview of customers-->
+    <!--Grid with two rows 1.Stackpanel holding button 2.Listview of customers-->
     <!--Name your elements when you want to access them in the code behind-->
     <!--Moved Column definitions to make it into a user control as there the move button is dependent on column value-->
     <Grid >
@@ -24,7 +30,7 @@
         <!--use the converter key--> 
         <Grid Grid.Column="{Binding Path=NavigationSide, 
             Converter={StaticResource NavigationSideToGridColumnConv}}"  
-              Background="Gray" >
+              Background="Gray" Width="260">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -49,10 +55,11 @@
             <!--Bind it to the observable collection of customers in the VM-->
             <!--SelectedItem holds the selected object in the list view-->
             <!--To display a property of the object use display memeber path-->
+            <!--Can define a data template on the item template to bind details to display-->
             <ListView x:Name="customerListView" Grid.Row="1" Margin="0 10 0 0"
                       ItemsSource="{Binding Path=Customers}"
                       SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
-                      DisplayMemberPath="FirstName">
+                      ItemTemplate ="{StaticResource CustomerListView}">
                 
             </ListView>
         </Grid>

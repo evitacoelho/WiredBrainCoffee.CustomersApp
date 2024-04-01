@@ -10,26 +10,16 @@ namespace WiredBrainCoffee.CustomersApp.View
     /// </summary>
     public partial class CustomersView : UserControl
     {
-        private CustomersViewModel _viewModel;
+       
 
         public CustomersView()
         {
             InitializeComponent();
 
-            //set the data context for this view --> bind it the view model
-            _viewModel =  new CustomersViewModel(new CustomerDataProvider());
-            DataContext = _viewModel;
-
-            //event handler for loaded event when the view is ready 
-            //this populates the customers for the view when fired
-            Loaded += Customers_ViewLoaded;
+          
         }
 
-        private async void Customers_ViewLoaded(object sender, RoutedEventArgs e)
-        {
-            //invokes the method from the viewmodel to load the view with customer data from the data provider
-           await _viewModel.LoadAsync();
-        }
+      
 
         //private void BtnMoveNavigation_Click(object sender, RoutedEventArgs e)
         //{

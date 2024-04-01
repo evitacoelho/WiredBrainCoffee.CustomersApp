@@ -58,7 +58,7 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
         public DelegateCommand DeleteCommand { get; }
 
         //Call the Async method from the Data provider interface to load data for Customers prop for the view
-        public async Task LoadAsync()
+        public async override Task LoadAsync()
         {
             //if data is already loaded into property, do nothing
             if(Customers.Any())

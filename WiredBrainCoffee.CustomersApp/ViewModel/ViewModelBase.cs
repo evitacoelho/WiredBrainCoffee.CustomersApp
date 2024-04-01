@@ -19,5 +19,8 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
             //invokes property change event handler with the property name that is changed
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public virtual Task LoadAsync() =>  Task.CompletedTask;
+        
     }
 }
