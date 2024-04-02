@@ -30,7 +30,7 @@
         <!--use the converter key--> 
         <Grid Grid.Column="{Binding Path=NavigationSide, 
             Converter={StaticResource NavigationSideToGridColumnConv}}"  
-              Background="Gray" Width="260">
+              Background="#90886F" Width="260">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -73,13 +73,18 @@
             <!--Path defines the content that is displayed
             Mode controls the direction of update
             Update source controls when the update will be triggered-->
+            
+            <!--Set common styles for stack panel using style tag-->
+           
             <Label>First Name:</Label>
             <TextBox Text="{Binding Path=SelectedCustomer.FirstName,
-                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            
+                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource TextBoxStyle}"/>
+
             <Label>Last Name:</Label>
             <TextBox Text="{Binding Path=SelectedCustomer.LastName,
-                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource TextBoxStyle}"></TextBox>
             
             <!--Replace text with ischecked for a checkbox-->
             <CheckBox  IsChecked ="{Binding Path=SelectedCustomer.IsDeveloper,

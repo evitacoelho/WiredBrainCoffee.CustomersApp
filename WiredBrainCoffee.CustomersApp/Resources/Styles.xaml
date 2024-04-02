@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style TargetType="TextBox" x:Key="textBoxBaseStyle">
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+    <!--can inherit from other styles-->
+    <Style TargetType="TextBox" x:Key="TextBoxStyle"
+       BasedOn="{StaticResource textBoxBaseStyle}">
+        <Style.Setters>
+            <Setter Property="Background" Value="#90886F"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style.Setters>
+        <!--Triggers are activated based on data and events-->
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Background" Value="Gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>
