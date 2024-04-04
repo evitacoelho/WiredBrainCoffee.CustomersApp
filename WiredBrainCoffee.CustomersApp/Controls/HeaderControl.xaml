@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <!--Define resources that can be used in xaml with a key-->
-    <!--Defining toe resource in app.xaml will give them global access-->
+    <!--Defining the resource in app.xaml will give them global access-->
     <!--<UserControl.Resources>
         <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="Orange"/>
         <SolidColorBrush x:Key="HeaderForegroundBrush" Color="White"/>
