@@ -14,24 +14,35 @@ Understand the MVVM pattern and its benefits for building maintainable and testa
 The App has three simple operations
 ![HomeScreen](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/526bf697-0c8e-4639-a1be-59d2e13eab2f)
 
+
 1. Add - adds additional customers to the list of customer
    ![Add](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/785e3db6-9c29-43ab-9cfe-c2f65f717d70)
+   
 
 3. Delete - Deletes a selected customer from the view
 ![delete1](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/059a5f9a-3721-4e3e-9be7-ba565c20b00f)
+
 ![Delete 2](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/7fbfb012-f755-46e6-9365-d37726f064e8)
 
-4. Move navigation - Swaps the view from left to right and vice versa
+
+5. Move navigation - Swaps the view from left to right and vice versa
    ![Screenshot 2024-04-04 182530](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/b9fa5cec-335d-4565-b145-1092353e7bc9)
+   
    ![Navigation](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/b643543e-dc19-4bdd-a01c-37ffbf2f1881)
+   
 The app has two views
+
 1. Customers
    ![Screenshot 2024-04-04 182451](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/88bceb3d-1f7b-46df-a0ab-2d1a92be985e)
+   
 
 2 List of Products
 ![Screenshot 2024-04-04 182755](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/aad86ac9-5bf2-47f0-a9e1-ff489a42b0c7)
 
+
+
 **Understanding MVVM, User Control, Item Control, Content Control, Resources, and Style Tag used to build this project**
+
 **Model View ViewModel (MVVM)**
 MVVM is a design pattern used in WPF (Windows Presentation Foundation) applications to separate the concerns of the user interface (View), the application logic (ViewModel), and the data (Model).
 
@@ -40,11 +51,14 @@ View: Represents the user interface elements.
 ViewModel: Acts as an intermediary between the View and the Model, providing data and behavior to the View while keeping the View and Model separate.
 MVVM promotes maintainability, testability, and scalability of the application code by decoupling different components and making them easier to manage and extend.
 
+
 **User Control**
 A User Control in WPF is a reusable component that encapsulates a piece of UI functionality. It allows you to create custom controls by combining existing controls and arranging them as needed. User Controls simplify the development process by promoting code reusability and modularization.
 
+
 **Item Control**
 Item Controls in WPF are controls that display a collection of items, such as lists or grids. Examples include ListBox, ListView, and ComboBox. These controls provide properties and methods to bind data collections and customize the appearance and behavior of individual items.
+
 
 **Content Control**
 Content Controls in WPF are controls that can contain a single piece of content, such as text, images, or other controls. Examples include Label, Button, and TextBox. Content Controls offer properties to set and manipulate the content they contain.
@@ -60,6 +74,7 @@ In conclusion, understanding MVVM, User Control, Item Control, Content Control, 
 
 **Understanding Data Binding in WPF**
 Data binding in WPF is a powerful mechanism that establishes a connection between the user interface elements (UI) and the data in your application. It allows you to synchronize the data displayed in the UI with the underlying data sources, such as objects, collections, or databases. Here's a comprehensive overview of data binding in WPF:
+
 
 **Key Concepts**
 Binding Source: The source of data that you want to display or manipulate in the UI. This can be an object, a property, a collection, or any other data structure.
@@ -81,10 +96,12 @@ Separation of Concerns: Data binding promotes separation of concerns by decoupli
 
 Support for MVVM Pattern: Data binding is an integral part of the Model-View-ViewModel (MVVM) pattern, enabling seamless communication between the View and the ViewModel.
 
+
 **Implementation**
 XAML-based Binding: Data binding is primarily implemented in XAML (Extensible Application Markup Language) using markup extensions such as {Binding} and {StaticResource}. You define bindings directly in the XAML markup of your UI elements.
 
 Code-Behind Binding: Alternatively, you can also perform data binding programmatically in the code-behind file using the WPF data binding API. This approach provides more flexibility and control over the binding process.
+
 
 **Conclusion**
 Data binding is a fundamental concept in WPF development that facilitates dynamic and responsive user interfaces. By mastering data binding techniques, you can create robust and interactive applications that seamlessly integrate data with the presentation layer, resulting in a superior user experience.
