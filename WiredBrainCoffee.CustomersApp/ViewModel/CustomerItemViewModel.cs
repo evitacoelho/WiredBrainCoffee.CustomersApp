@@ -9,7 +9,7 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
 {
     //this is a class to handle individual customer items
 
-    public class CustomerItemViewModel:ViewModelBase
+    public class CustomerItemViewModel:ValidationViewModelBase
     {
         private readonly Customer _model;
 
@@ -28,6 +28,13 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
             {
                 _model.FirstName = value;
                 RaisePropertyChanged();
+               if(string.IsNullOrEmpty(_model.FirstName)) {
+                    AddError("First name is a required field");
+                }
+                else
+                {
+                    ClearErrors();
+                }
             }  
         }
         public string? LastName
