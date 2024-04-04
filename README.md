@@ -1,6 +1,7 @@
 Wired Brain Coffee - An Introduction to WPF
 
 **Outcomes of the project**
+
 **The structure of a WPF application.**
 - Extensible Application Markup Language (XAML) and its role in WPF development.
 
