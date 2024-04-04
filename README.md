@@ -17,20 +17,24 @@ Understand the MVVM pattern and its benefits for building maintainable and testa
 **The Following section illustrates the functionality of this simple WPF app**
 
 The App has three simple operations
+
 ![HomeScreen](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/526bf697-0c8e-4639-a1be-59d2e13eab2f)
 
 
 1. Add - adds additional customers to the list of customer
+   
    ![Add](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/785e3db6-9c29-43ab-9cfe-c2f65f717d70)
    
 
 3. Delete - Deletes a selected customer from the view
+   
 ![delete1](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/059a5f9a-3721-4e3e-9be7-ba565c20b00f)
 
 ![Delete 2](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/7fbfb012-f755-46e6-9365-d37726f064e8)
 
 
 5. Move navigation - Swaps the view from left to right and vice versa
+   
    ![Screenshot 2024-04-04 182530](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/b9fa5cec-335d-4565-b145-1092353e7bc9)
    
    ![Navigation](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/b643543e-dc19-4bdd-a01c-37ffbf2f1881)
@@ -38,10 +42,12 @@ The App has three simple operations
 The app has two views
 
 1. Customers
+   
    ![Screenshot 2024-04-04 182451](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/88bceb3d-1f7b-46df-a0ab-2d1a92be985e)
    
 
 2 List of Products
+
 ![Screenshot 2024-04-04 182755](https://github.com/evitacoelho/WiredBrainCoffee.CustomersApp/assets/72261879/aad86ac9-5bf2-47f0-a9e1-ff489a42b0c7)
 
 
