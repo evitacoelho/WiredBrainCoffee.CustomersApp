@@ -9,3 +9,4 @@ Outcomes of the project
 -Styles and templates to enhance the visual appearance of WPF applications.
 **Model View ViewModel (MVVM) Pattern**
 Understand the MVVM pattern and its benefits for building maintainable and testable WPF applications.
+**The Following section illustrate the functionality of this simple WPF app**
